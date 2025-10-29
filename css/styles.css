@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    padding-top: 70px; /* prevent content under fixed navbar */
 }
 
 .container {
@@ -186,7 +187,7 @@ body {
 /* Hero Section */
 .hero {
     min-height: 100vh;
-    background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(33, 150, 243, 0.3)), url('mountain.jpg');
+    background: linear-gradient(rgba(233, 30, 99, 0.3), rgba(33, 150, 243, 0.3)), url('../images/mountain.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -398,11 +399,11 @@ body {
 
 /* Use your own images named stupa.jpg and tiger.jpg placed in the project root */
 .stupa-image {
-    background-image: url('stupa.jpg');
+    background-image: url('../images/stupa.jpg');
 }
 
 .tiger-image {
-    background-image: url('wildlife.jpg');
+    background-image: url('../images/wildlife.jpg');
 }
 
 /* Services Section */
@@ -1022,6 +1023,11 @@ body {
 /* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Ensure in-page anchors are not hidden behind fixed header */
+section {
+    scroll-margin-top: 80px;
 }
 
 /* Loading Animation */

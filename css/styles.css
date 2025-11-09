@@ -286,6 +286,63 @@ body {
     color: var(--white);
 }
 
+/* Featured Button for Chitwan Tour */
+.btn-featured {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-featured::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-featured:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-featured:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-featured span,
+.btn-featured i {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-featured i {
+    transition: transform 0.3s ease;
+}
+
+.btn-featured:hover i {
+    transform: translateX(5px);
+}
+
 /* Bus Animation */
 .hero-image {
     display: flex;
@@ -553,10 +610,100 @@ body {
     box-shadow: var(--shadow-hover);
 }
 
+/* Featured Tour Card - Chitwan */
+.featured-tour {
+    position: relative;
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color)) border-box;
+    animation: featuredGlow 3s ease-in-out infinite, featuredEntrance 0.8s ease-out;
+    transform: scale(1.02);
+}
+
+@keyframes featuredEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.02) translateY(0);
+    }
+}
+
+.featured-tour:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.3);
+}
+
+@keyframes featuredGlow {
+    0%, 100% {
+        box-shadow: 0 5px 25px rgba(233, 30, 99, 0.2),
+                    0 0 0 0 rgba(233, 30, 99, 0.4);
+    }
+    50% {
+        box-shadow: 0 5px 25px rgba(233, 30, 99, 0.3),
+                    0 0 0 4px rgba(233, 30, 99, 0.1);
+    }
+}
+
+.featured-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.featured-badge i {
+    font-size: 0.9rem;
+    color: #ffd700;
+}
+
 .destination-image {
     height: 200px;
     position: relative;
     overflow: hidden;
+}
+
+.tour-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    z-index: 5;
+}
+
+.tour-overlay i {
+    font-size: 1.2rem;
+    color: #ffd700;
 }
 
 .destination-img {
@@ -578,12 +725,42 @@ body {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.featured-tour .destination-content h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.featured-tour .destination-content h3 i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    animation: checkPulse 2s ease-in-out infinite;
+}
+
+@keyframes checkPulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
 }
 
 .destination-content p {
     color: var(--text-light);
     margin-bottom: 1.5rem;
     line-height: 1.6;
+}
+
+.featured-tour .destination-content p {
+    font-weight: 500;
+    color: var(--text-dark);
 }
 
 .destinations-note {
@@ -980,6 +1157,44 @@ body {
 
     .destinations-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Featured Tour Mobile Styles */
+    .featured-tour {
+        transform: scale(1);
+        border-width: 2px;
+    }
+
+    .featured-tour:hover {
+        transform: translateY(-5px) scale(1);
+    }
+
+    .featured-badge {
+        top: 10px;
+        right: 10px;
+        padding: 8px 14px;
+        font-size: 0.75rem;
+    }
+
+    .featured-badge span {
+        font-size: 0.7rem;
+    }
+
+    .tour-overlay {
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .btn-featured {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .featured-tour .destination-content h3 {
+        font-size: 1.3rem;
+        flex-wrap: wrap;
     }
 }
 
